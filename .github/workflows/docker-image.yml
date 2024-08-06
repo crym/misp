@@ -6,7 +6,7 @@ on:
       misp_ref:
         description: 'MISP branch or tag to build'
         required: true
-        default: 'develop'
+        default: '2.4'
 
 env:
   TEST_TAG: misp:latest
@@ -104,6 +104,8 @@ jobs:
         platforms: linux/amd64 #,linux/arm64
         push: true
         tags: |
+          crym/misp:${{ steps.variables.outputs.MISP_VERSION }}
+          ghcr.io/crym/misp:${{ steps.variables.outputs.MISP_VERSION }}
           crym/misp:latest
           ghcr.io/crym/misp:latest
         build-args: |
